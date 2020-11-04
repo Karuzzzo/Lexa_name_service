@@ -5,7 +5,7 @@ import hashlib, random, binascii, argparse
 
 def createParser ():
     parser = argparse.ArgumentParser()
-    parser.add_argument ('--request', '-r',default='error')
+    parser.add_argument ('--request', '-r',default='get')
     parser.add_argument ('--UID', '-u',default='error')
     parser.add_argument ('--IPFS', '-i',default='error')
     parser.add_argument ('--sign', '-s',default='error')
@@ -25,12 +25,12 @@ def set_mode(U_ID, _IPFS, _sign):
         print('Wrong signature or public key!')
 
 def write_verified(name, pk, link):
-    storage = open("storage.md", "w")
+    storage = open("Data/storage.md", "w")
     storage.write(name + ":" + pk + ":" + link)
     storage.close()
 
 def get_mode(U_ID):
-    storage = open("storage.md", "r")
+    storage = open("Data/storage.md", "r")
     print(*storage)
     storage.close()
 

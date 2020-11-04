@@ -17,18 +17,14 @@ def createParser ():
     return parser
 
 def sig_string(input, sec_key):
-    #private_key = bytes(sec_key, 'utf-8')
-    print(len(input))
     input_b = bytes(input, 'utf-8')
     private_key = binascii.unhexlify(sec_key)
     priv = SigningKey.from_string(private_key, curve=SECP256k1)
     signature = priv.sign(input_b)
-    print(signature.hex(), 'len is ', len(signature.hex()))
+    print('Your signature is: ', signature.hex())
 
 parser = createParser()
 namespace = parser.parse_args()
- 
-    #print (namespace)
  
 if namespace.mode == 'gen':
     generate_pair()
